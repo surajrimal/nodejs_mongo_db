@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="Suraj Rimal">
+		<title>Project 3 | Contact</title>
+		<link rel="icon" href="./images/favicon.ico">
+		<link href='https://fonts.googleapis.com/css?family=Almendra' rel='stylesheet'>
+		<link rel="stylesheet" href="styles.css" >
+		<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+        <script type="text/javascript">
+            function submitForm(){
+                fullname = document.getElementById("fname").value;
+                address = document.getElementById("address").value;
+                phone = document.getElementById("phone").value;
+                email = document.getElementById("email").value;
+                review = document.getElementById("review").value;
+
+                errorMessage = '';
+                if(fullname === ''){
+                    errorMessage += "Name cannot be empty.\n";
+                }
+                if(address === ''){
+                    errorMessage += "Address cannot be empty.\n";
+                }
+                if(phone === ''){
+                    errorMessage += "Phone cannot be empty.\n";
+                }
+                if(email === ''){
+                    errorMessage += "Email cannot be empty.\n";
+                }
+                else if(!checkEmail(email)){
+                    errorMessage += "Please provide a valid email.\n"
+                }
+                if(review === ''){
+                    errorMessage += "Comments cannot be empty.\n";
+                }
+
+                if(errorMessage !== ''){
+                    document.getElementById('error').innerText = errorMessage;
+                    document.getElementById('error').style.display = 'block';
+                }
+                else{
+                    alert("Your form has been submitted successfully, I will get bacck to you asap!");
+                    document.getElementById('contact-me').reset();
+                }
+            }
+
+            function clearError(){
+                document.getElementById('error').innerText = '';
+                document.getElementById('error').style.display = 'none';
+            }
+            
+            function checkEmail(email) {
+                var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                return filter.test(email);
+            }
+        </script>
+	</head>
+	<body>
+		<div class="navigation-container">
+			<img src="./images/wall.jpg" alt="">
+			<nav class="main-navigation">
+				<a href="./index.html">Home</a>
+				<a href="./gallery.html">Gallery</a>
+				<a href="./game.html">Game</a>
+				<a href="./contact.html">Contact Me</a>
+			</nav>
+		</div>
+        <div class="content">
+        <section>
+            <form id="contact-me" onchange="clearError()">
+                <h3>Please leave your comment.</h3>
+                <label for="fname">Full Name:</label><br>
+                <input type="text" id="fname" name="fname" required><br>
+                <label for="address">Address:</label><br>
+                <input type="text" id="address" name="address"><br>
+                <label for="phone">Phone number:</label><br>
+                <input type="number" id="phone" name="phone"><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br>
+                <label for="review">Comments:</label><br>
+                <textarea id="review" name="comment" rows="10"></textarea><br>
+                <button type="button" onclick="submitForm()">Submit</button>
+                <div id="error" style="display: none;"></div>
+            </form>
+        </section>
+        <footer>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            Designed by: <strong>Suraj Rimal</strong>
+                            <br>
+                            <br>
+                            <div class="social-icons">
+                                <a href=""><img src="./images/icon_facebook.png" alt=""></a>
+                                <a href=""><img src="./images/icon_linkedin.png" alt=""></a>
+                                <a href=""><img src="./images/icon_twitter.png" alt=""></a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="newsletter">
+                                <small>	Subscribe to my newsletter</small><br>
+                                <input type="text" placeholder="Email">
+                                <button>Subscribe</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <p>Copyright &copy; 2021 Suraj Rimal</p>
+        </footer>
+        </div>
+    </body>
+</html>
